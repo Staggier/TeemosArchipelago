@@ -1,3 +1,4 @@
+class_name Cow
 extends KinematicBody2D
 
 var velocity: Vector2 = Vector2()
