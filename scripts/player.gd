@@ -7,6 +7,8 @@ enum {
 	TOOL
 }
 
+onready var sprite = $AnimatedSprite
+
 var tools: Array = ["hoe", "axe", "water"]
 var tool_index = 0;
 
@@ -27,13 +29,13 @@ func idle_state():
 	
 	match direction:
 		Vector2.UP:
-			$AnimatedSprite.animation = "idle-up"
+			sprite.animation = "idle-up"
 		Vector2.DOWN:
-			$AnimatedSprite.animation = "idle-down"
+			sprite.animation = "idle-down"
 		Vector2.RIGHT:
-			$AnimatedSprite.animation = "idle-right"
+			sprite.animation = "idle-right"
 		Vector2.LEFT:
-			$AnimatedSprite.animation = "idle-left"
+			sprite.animation = "idle-left"
 		_:
 			pass
 
@@ -43,22 +45,22 @@ func run_state():
 	if Input.is_action_pressed("up"):
 		velocity.y -= 1
 		direction = Vector2(0, -1)
-		$AnimatedSprite.animation = "run-up"
+		sprite.animation = "run-up"
 		movement_detected = true
 	if Input.is_action_pressed("down"):
 		velocity.y += 1
 		direction = Vector2(0, 1)
-		$AnimatedSprite.animation = "run-down"
+		sprite.animation = "run-down"
 		movement_detected = true
 	if Input.is_action_pressed("left"):
 		velocity.x -= 1
 		direction = Vector2(-1, 0)
-		$AnimatedSprite.animation = "run-left"
+		sprite.animation = "run-left"
 		movement_detected = true
 	if Input.is_action_pressed("right"):
 		velocity.x += 1
 		direction = Vector2(1, 0)
-		$AnimatedSprite.animation = "run-right"
+		sprite.animation = "run-right"
 		movement_detected = true
 			
 	velocity = velocity.normalized()
@@ -88,13 +90,13 @@ func tool_state():
 			
 	match direction:
 		Vector2.UP:
-			$AnimatedSprite.animation = "%s-up" % tool
+			sprite.animation = "%s-up" % tool
 		Vector2.DOWN:
-			$AnimatedSprite.animation = "%s-down" % tool
+			sprite.animation = "%s-down" % tool
 		Vector2.RIGHT:
-			$AnimatedSprite.animation = "%s-right" % tool
+			sprite.animation = "%s-right" % tool
 		Vector2.LEFT:
-			$AnimatedSprite.animation = "%s-left" % tool
+			sprite.animation = "%s-left" % tool
 		_:
 			pass
 
