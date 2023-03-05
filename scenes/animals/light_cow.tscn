@@ -1,7 +1,7 @@
 [gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://assets/Sprout Lands - Sprites - premium pack/characters/Animal SpriteSheets/cow/Light cow animations.png" type="Texture" id=1]
-[ext_resource path="res://scripts/cow.gd" type="Script" id=2]
+[ext_resource path="res://scripts/entity/cow.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=8]
 flags = 4
@@ -180,7 +180,7 @@ animations = [ {
 "name": "happy",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 25 ), SubResource( 25 ), SubResource( 26 ), SubResource( 26 ), SubResource( 27 ), SubResource( 27 ), SubResource( 27 ), SubResource( 27 ) ],
+"frames": [ SubResource( 25 ), SubResource( 25 ), SubResource( 26 ), SubResource( 26 ), SubResource( 27 ), SubResource( 27 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
@@ -205,7 +205,7 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "idle"
-frame = 4
+frame = 1
 speed_scale = 1.6
 playing = true
 
@@ -214,5 +214,6 @@ position = Vector2( 0, 4.625 )
 shape = SubResource( 7 )
 
 [node name="Timer" type="Timer" parent="."]
+autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_idle_timeout"]
