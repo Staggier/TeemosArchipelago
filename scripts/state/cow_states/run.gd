@@ -1,9 +1,9 @@
 class_name CowRunState
 extends State
 
-var cow
+var cow: Cow
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var random_direction: int = randi() % 4
 
 	# moves up, down, left, or right with values 0-3
@@ -20,10 +20,11 @@ func _physics_process(delta):
 			cow.direction = Vector2.RIGHT
 			
 	cow.move()
+	cow.update_face_direction()
 	
-func enter(enter_params: Array = []):
-	cow.sprite.animation = "run"
-	cow.timer.wait_time = 2
+func enter(_enter_params: Array):
+	cow.sprite.play("run")
+	cow.timer.start(2)
 	
 func _init(new_cow):
 	cow = new_cow

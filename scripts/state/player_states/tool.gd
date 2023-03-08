@@ -1,14 +1,15 @@
 class_name PlayerToolState
 extends State
 
-var player
+var player: Player
 
 var tools: Array = ["hoe", "axe", "water"]
 var tool_index = 0;
+var num_tools = len(tools)
 
 var tool: String = tools[tool_index]
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	if Input.is_action_pressed("t"):
 		Input.action_release("t")
@@ -21,7 +22,7 @@ func _physics_process(delta):
 		Input.action_release("next")
 		tool_switched = true
 		
-		if tool_index == len(tools) - 1:
+		if tool_index == num_tools - 1:
 			tool_index = -1
 		tool_index += 1
 	
@@ -30,7 +31,7 @@ func _physics_process(delta):
 		tool_switched = true
 		
 		if tool_index == 0:
-			tool_index = len(tools)
+			tool_index = num_tools
 		tool_index -= 1
 		
 	if tool_switched:
@@ -45,7 +46,9 @@ func _physics_process(delta):
 			player.sprite.animation = "%s-right" % tool
 		_:
 			player.sprite.animation = "%s-left" % tool
+			
+	player.idle_timer.start(player.IDLE_TIMEOUT)
 
 func _init(new_player):
 	player = new_player
-	
+	self.state_name = "tool"

@@ -1,11 +1,13 @@
 class_name CowIdleState
 extends State
 
-var cow
+var cow: Cow
 
-func enter(enter_params: Array = []):
-	cow.sprite.animation = "idle"
-	cow.timer.wait_time = randi() % 3 + 1
+func enter(_enter_params):
+	cow.sprite.play("idle")
+	
+	randomize()
+	cow.timer.start(randi() % 3 + 1)
 
 func _init(new_cow):
 	cow = new_cow

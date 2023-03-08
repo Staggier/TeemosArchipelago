@@ -1,11 +1,10 @@
 class_name CowEatState
 extends State
 
-var cow
+var cow: Cow
 
-func enter(enter_params: Array = []):
-	cow.sprite.animation = "eat"
-	cow.timer.wait_time = randi() % 3 + 2
+func enter(_enter_params):
+	cow.sprite.play("eat")
 
 func _init(new_cow):
 	cow = new_cow

@@ -13,4 +13,4 @@ func change_state(state_name: String, enter_params: Array = []):
 	current_state.enter(enter_params)
 	
 func _physics_process(delta):
-	current_state.physics_process(delta)
+	current_state._physics_process(delta)

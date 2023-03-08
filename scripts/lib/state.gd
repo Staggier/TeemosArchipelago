@@ -3,10 +3,10 @@ extends Node
 
 var state_name: String
 
-func enter(enter_params: Array):
+func enter(_enter_params: Array):
 	pass
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	pass
 	
 func exit():
