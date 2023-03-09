@@ -3,7 +3,7 @@ extends State
 
 var cow: Cow
 
-func _physics_process(_delta):
+func _physics_process(_delta: float) -> void:
 	var random_direction: int = randi() % 4
 
 	# moves up, down, left, or right with values 0-3
@@ -22,10 +22,10 @@ func _physics_process(_delta):
 	cow.move()
 	cow.update_face_direction()
 	
-func enter(_enter_params: Array):
+func enter(_enter_params: Array[Variant]) -> void:
 	cow.sprite.play("run")
 	cow.timer.start(2)
 	
-func _init(new_cow):
+func _init(new_cow: Cow) -> void:
 	cow = new_cow
 	self.state_name = "run"

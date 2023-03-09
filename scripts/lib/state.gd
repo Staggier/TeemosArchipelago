@@ -3,11 +3,11 @@ extends Node
 
 var state_name: String
 
-func enter(_enter_params: Array):
+func enter(_enter_params: Array[Variant]) -> void:
 	pass
 	
-func _physics_process(_delta):
+func _physics_process(_delta: float) -> void:
 	pass
 	
-func exit():
+func exit() -> void:
 	return

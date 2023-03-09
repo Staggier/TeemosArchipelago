@@ -3,11 +3,15 @@ extends State
 
 var player: Player
 
-func _physics_process(_delta):
+func _physics_process(_delta: float) -> void:
 	player.velocity = Vector2()
 	
 	var movement_detected: bool = false
 	
+		# Tool state
+	if Input.is_action_pressed("t"):
+		player.state_machine.change_state("tool")
+		return
 	if Input.is_action_pressed("up"):
 		player.velocity.y -= 1
 		player.direction = Vector2.UP
@@ -37,6 +41,6 @@ func _physics_process(_delta):
 		
 	player.move()
 			
-func _init(new_player):
+func _init(new_player: Player) -> void:
 	player = new_player
 	self.state_name = "run"

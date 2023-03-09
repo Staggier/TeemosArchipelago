@@ -5,22 +5,22 @@ var timer: Timer
 var sprite: AnimatedSprite2D
 
 var state_machine: StateMachine
-var pos: Vector2
 var direction: Vector2 = Vector2.RIGHT
 var speed: int = 100
 
-func move():
+func move() -> void:
 	velocity = velocity.normalized()
 	velocity *= speed
 	move_and_slide()
 	
-func update_face_direction():
+# Flip the sprite based on the direction the cow is facing and moving towards
+func update_face_direction() -> void:
 	if direction == Vector2.RIGHT and velocity.x >= 0:
 		sprite.flip_h = false
 	elif direction == Vector2.LEFT and velocity.x <= 0:
 		sprite.flip_h = true
 		
-func _on_timeout():
+func _on_timeout() -> void:
 	match state_machine.current_state.state_name:
 		"idle":
 			randomize()
@@ -53,16 +53,15 @@ func _on_timeout():
 		_:
 			pass
 		
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	state_machine.current_state._physics_process(delta)
-	pos = self.position
 
-func _ready():
+func _ready() -> void:
 	timer = $Timer
 	sprite = $AnimatedSprite2D
 	sprite.play("idle")
 	
-func _init():
+func _init() -> void:
 	state_machine = StateMachine.new()
 	
 	state_machine.add_state("idle", CowIdleState.new(self))

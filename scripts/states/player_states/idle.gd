@@ -3,7 +3,7 @@ extends State
 
 var player: Player
 
-func _physics_process(_delta):
+func _physics_process(_delta: float) -> void:
 	# Player moved
 	if Input.is_action_pressed("up") or Input.is_action_pressed("down") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 		player.state_machine.change_state("run")
@@ -11,7 +11,6 @@ func _physics_process(_delta):
 		
 	# Tool state
 	if Input.is_action_pressed("t"):
-		Input.action_release("t")
 		player.state_machine.change_state("tool")
 		return
 		
@@ -30,7 +29,7 @@ func _physics_process(_delta):
 				player.emote.state_machine.change_state("angry")
 			return
 	
-func enter(_enter_params: Array):
+func enter(_enter_params: Array[Variant]) -> void:
 	match player.direction:
 		Vector2.UP:
 			player.sprite.play("idle-up")
@@ -41,6 +40,6 @@ func enter(_enter_params: Array):
 		_:
 			player.sprite.play("idle-left")
 
-func _init(new_player):
+func _init(new_player: Player) -> void:
 	player = new_player
 	self.state_name = "idle"

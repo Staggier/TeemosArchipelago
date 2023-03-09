@@ -1234,7 +1234,7 @@ size = Vector2(10, 10)
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_3obue")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="Sprite" type="AnimatedSprite2D" parent="CharacterBody2D"]
 sprite_frames = SubResource("SpriteFrames_0ey6x")
 animation = &"water-down"
 frame_progress = 0.891033
@@ -1243,7 +1243,7 @@ frame_progress = 0.891033
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_brnov")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera" type="Camera2D" parent="CharacterBody2D"]
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0

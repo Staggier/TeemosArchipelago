@@ -7,20 +7,14 @@ var purple_cow: Cow
 var green_cow: Cow
 var pink_cow: Cow
 var brown_cow: Cow
-
-var cows: Array[Cow]
-
-func _physics_process(_delta):
-	for cow in cows:
-		if player.position.y <= cow.position.y:
-			cow.z_index = player.z_index
-		else:
-			cow.z_index = player.z_index - 1
-
-func _ready():
+	
+func _ready() -> void:
 	# set player and emote 
 	player = $Player/CharacterBody2D
-	player.emote = $Player/CanvasLayer/Control
+	player.emote = $UI/Emote
+	
+	# Give the tool selection menu access to the player
+	$UI/ToolSelectMenu.player = player
 	
 	# set cows
 	light_cow = $LightCow/CharacterBody2D
@@ -36,5 +30,3 @@ func _ready():
 	green_cow.position = Vector2(32, 80)
 	pink_cow.position = Vector2(-4, 16)
 	brown_cow.position = Vector2(154, 105)
-	
-	cows = [light_cow, purple_cow, green_cow, pink_cow, brown_cow]

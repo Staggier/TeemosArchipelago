@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
-const IDLE_TIMEOUT = 15
+const IDLE_TIMEOUT: int = 15
 
 var timer: Timer
 var idle_timer: Timer
@@ -13,8 +13,9 @@ enum Tool {
 	WATER
 }
 
-var tools: Array = ["hoe", "axe", "water"]
-var tool_index = Tool.HOE
+var tools: Array[String] = ["hoe", "axe", "water"]
+var tool_index: int = 0
+var tool: String = tools[tool_index]
 
 var direction: Vector2 = Vector2.DOWN
 var speed: int = 115
@@ -23,33 +24,33 @@ var state_machine: StateMachine
 
 var emote: Emote
 
-func _on_timeout():
+func _on_timeout() -> void:
 	match state_machine.current_state.state_name:
 		"feed":
 			state_machine.change_state("idle")
 		_:
 			pass
 			
-func _on_idle_timeout():
+func _on_idle_timeout() -> void:
 	emote.state_machine.change_state("sleepy")
 
-func move():
+func move() -> void:
 	self.velocity = self.velocity.normalized()
 	self.velocity *= speed
 	move_and_slide()
 		
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	state_machine.current_state._physics_process(delta)
 			
-func _ready():
+func _ready() -> void:
 	timer = $Timer
 	idle_timer = $IdleTimer
-	sprite = $AnimatedSprite2D
+	sprite = $Sprite
 	
 	sprite.play("idle-down")
 	idle_timer.start(IDLE_TIMEOUT)
 	
-func _init():
+func _init() -> void:
 	state_machine = StateMachine.new()
 	
 	state_machine.add_state("idle", PlayerIdleState.new(self))

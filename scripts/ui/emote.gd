@@ -5,22 +5,22 @@ var timer: Timer
 var sprite: AnimatedSprite2D
 var state_machine: StateMachine
 
-func _on_timeout():
+func _on_timeout() -> void:
 	match state_machine.current_state.state_name:
-		"angry":
+		"angry", "happy":
 			state_machine.change_state("idle")
 		_:
 			pass
 		
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	state_machine._physics_process(delta)
 
-func _ready():
+func _ready() -> void:
 	timer = $Timer
 	sprite = $AnimatedSprite2D
 	sprite.play("idle")
 	
-func _init():
+func _init() -> void:
 	state_machine = StateMachine.new()
 	
 	state_machine.add_state("idle", IdleEmoteState.new(self))
