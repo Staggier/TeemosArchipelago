@@ -5,10 +5,6 @@ const NUM_TOOLS = 3
 var player: Player
 
 func _physics_process(_delta: float) -> void:
-	
-	if Input.is_action_pressed("up") or Input.is_action_pressed("down") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
-		player.state_machine.change_state("run")
-		return
 	if Input.is_action_pressed("t"):
 		player.state_machine.change_state("idle")
 		return

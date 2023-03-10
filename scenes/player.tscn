@@ -1,7 +1,7 @@
-[gd_scene load_steps=165 format=3 uid="uid://desx0yv7vbw68"]
+[gd_scene load_steps=165 format=3 uid="uid://co7s7svej7nr0"]
 
 [ext_resource type="Texture2D" uid="uid://dq8tlorx7tnyf" path="res://assets/Sprout Lands - Sprites - premium pack/characters/Premium Charakter Spritesheet.png" id="1_3jdiy"]
-[ext_resource type="Script" path="res://scripts/entity/player.gd" id="1_3obue"]
+[ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_fppp0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8p17w"]
 atlas = ExtResource("1_3jdiy")
@@ -1227,20 +1227,19 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_brnov"]
-size = Vector2(10, 10)
+size = Vector2(10, 8)
 
 [node name="Node2D" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-script = ExtResource("1_3obue")
+script = ExtResource("1_fppp0")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="CharacterBody2D"]
 sprite_frames = SubResource("SpriteFrames_0ey6x")
-animation = &"water-down"
-frame_progress = 0.891033
+animation = &"idle-down"
 
 [node name="Hitbox" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0, 2)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_brnov")
 
 [node name="Camera" type="Camera2D" parent="CharacterBody2D"]

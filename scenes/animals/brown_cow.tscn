@@ -1,6 +1,6 @@
-[gd_scene load_steps=45 format=3 uid="uid://bphw8ln2xs3dj"]
+[gd_scene load_steps=45 format=3]
 
-[ext_resource type="Script" path="res://scripts/entity/cow.gd" id="1_qn24w"]
+[ext_resource type="Script" path="res://scripts/entities/cow.gd" id="1_qn24w"]
 [ext_resource type="Texture2D" uid="uid://0djjudg1mvkv" path="res://assets/Sprout Lands - Sprites - premium pack/characters/Animal SpriteSheets/cow/Brown cow animations.png" id="2_j80q1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yqcag"]
@@ -327,7 +327,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0lerc"]
-size = Vector2(22, 7)
+size = Vector2(23, 8)
 
 [node name="Node2D" type="Node2D"]
 
@@ -340,7 +340,7 @@ animation = &"transition_to_sleep"
 frame_progress = 0.366998
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0, 7.5)
+position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_0lerc")
 
 [node name="Timer" type="Timer" parent="CharacterBody2D"]

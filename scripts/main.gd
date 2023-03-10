@@ -8,6 +8,9 @@ var green_cow: Cow
 var pink_cow: Cow
 var brown_cow: Cow
 	
+func _physics_process(delta):
+	print_debug(player.position)	
+
 func _ready() -> void:
 	# set player and emote 
 	player = $Player/CharacterBody2D

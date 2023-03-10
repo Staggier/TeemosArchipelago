@@ -14,6 +14,14 @@ func _physics_process(_delta: float) -> void:
 		player.state_machine.change_state("tool")
 		return
 		
+	# Attempt to open door
+	if Input.is_action_pressed("o"):
+		Input.action_release("o")
+		
+		var collider: KinematicCollision2D = player.get_last_slide_collision()
+		if collider != null and collider.get_collider() is Door:
+			(collider.get_collider() as Door).toggle()
+		
 	# Attempt to feed Cow
 	if Input.is_action_pressed("f"):
 		Input.action_release("f")
