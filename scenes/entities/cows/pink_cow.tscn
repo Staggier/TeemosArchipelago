@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3]
+[gd_scene load_steps=45 format=3 uid="uid://cp2tg83s2cnnh"]
 
 [ext_resource type="Script" path="res://scripts/entities/cow.gd" id="1_85ejp"]
 [ext_resource type="Texture2D" uid="uid://1q3vkkmk7kkv" path="res://assets/Sprout Lands - Sprites - premium pack/characters/Animal SpriteSheets/cow/Pink cow animation sprites.png" id="2_644wm"]

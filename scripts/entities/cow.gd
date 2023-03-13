@@ -63,6 +63,7 @@ func _ready() -> void:
 	
 func _init() -> void:
 	state_machine = StateMachine.new()
+	self.position = Vector2(0, 0)
 	
 	state_machine.add_state("idle", CowIdleState.new(self))
 	state_machine.add_state("run", CowRunState.new(self))

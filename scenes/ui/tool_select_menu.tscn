@@ -1,15 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://0w8mjq4nkpv"]
+[gd_scene load_steps=10 format=3 uid="uid://61fhsfc58pae"]
 
-[ext_resource type="Texture2D" uid="uid://c0gf6h8hxbp27" path="res://assets/Sprout Lands - UI Pack - Premium pack/UI Sprites/Other UI sprites/Setting menu.png" id="1_1x7vj"]
-[ext_resource type="Script" path="res://scripts/ui/tool_select.gd" id="1_sns6w"]
-[ext_resource type="Texture2D" uid="uid://carsb8bxltv7y" path="res://assets/Sprout Lands - UI Pack - Premium pack/UI Sprites/Other UI sprites/hoe_button.png" id="2_rm3mc"]
-[ext_resource type="Texture2D" uid="uid://dj1d87fbnenck" path="res://assets/Sprout Lands - UI Pack - Premium pack/UI Sprites/Other UI sprites/axe_button.png" id="3_dnv7r"]
-[ext_resource type="Texture2D" uid="uid://wulmltj55g05" path="res://assets/Sprout Lands - UI Pack - Premium pack/UI Sprites/Other UI sprites/watering_can_button.png" id="4_8416t"]
-[ext_resource type="Texture2D" uid="uid://cmwjfoe65jwr7" path="res://assets/Sprout Lands - UI Pack - Premium pack/UI Sprites/Other UI sprites/hoe_button_pressed.png" id="4_jexs0"]
-[ext_resource type="Texture2D" uid="uid://c1lkxffeqxx4c" path="res://assets/Sprout Lands - UI Pack - Premium pack/UI Sprites/Other UI sprites/tool_menu_corner.png" id="5_77mby"]
+[ext_resource type="Script" path="res://scripts/ui/tool_select.gd" id="1_in3uv"]
+[ext_resource type="Texture2D" uid="uid://c0gf6h8hxbp27" path="res://assets/Sprout Lands - UI Pack - Premium pack/UI Sprites/Other UI sprites/Setting menu.png" id="2_mbbq8"]
+[ext_resource type="Texture2D" uid="uid://carsb8bxltv7y" path="res://assets/Sprout Lands - UI Pack - Premium pack/UI Sprites/Other UI sprites/hoe_button.png" id="3_hh7ja"]
+[ext_resource type="Texture2D" uid="uid://cmwjfoe65jwr7" path="res://assets/Sprout Lands - UI Pack - Premium pack/UI Sprites/Other UI sprites/hoe_button_pressed.png" id="4_dlq6t"]
+[ext_resource type="Texture2D" uid="uid://dj1d87fbnenck" path="res://assets/Sprout Lands - UI Pack - Premium pack/UI Sprites/Other UI sprites/axe_button.png" id="5_ywmv4"]
+[ext_resource type="Texture2D" uid="uid://wulmltj55g05" path="res://assets/Sprout Lands - UI Pack - Premium pack/UI Sprites/Other UI sprites/watering_can_button.png" id="6_h7g6f"]
+[ext_resource type="Texture2D" uid="uid://c1lkxffeqxx4c" path="res://assets/Sprout Lands - UI Pack - Premium pack/UI Sprites/Other UI sprites/tool_menu_corner.png" id="7_hg8vh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_816bk"]
-texture = ExtResource("1_1x7vj")
+texture = ExtResource("2_mbbq8")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -164,9 +164,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 grow_horizontal = 2
-script = ExtResource("1_sns6w")
+script = ExtResource("1_in3uv")
 
-[node name="Background" type="TileMap" parent="."]
+[node name="MenuTiles" type="TileMap" parent="."]
 position = Vector2(-30, 22)
 tile_set = SubResource("TileSet_7kj6w")
 format = 2
@@ -187,8 +187,8 @@ offset_left = -59.0
 offset_top = 55.0
 offset_right = -35.0
 offset_bottom = 79.0
-texture_normal = ExtResource("2_rm3mc")
-texture_pressed = ExtResource("4_jexs0")
+texture_normal = ExtResource("3_hh7ja")
+texture_pressed = ExtResource("4_dlq6t")
 
 [node name="AxeButton" type="TextureButton" parent="."]
 layout_mode = 0
@@ -196,7 +196,7 @@ offset_left = -5.0
 offset_top = 55.0
 offset_right = 19.0
 offset_bottom = 79.0
-texture_normal = ExtResource("3_dnv7r")
+texture_normal = ExtResource("5_ywmv4")
 
 [node name="WaterButton" type="TextureButton" parent="."]
 layout_mode = 0
@@ -204,7 +204,7 @@ offset_left = 49.0
 offset_top = 55.0
 offset_right = 73.0
 offset_bottom = 79.0
-texture_normal = ExtResource("4_8416t")
+texture_normal = ExtResource("6_h7g6f")
 
 [node name="Corner1" type="TextureRect" parent="."]
 layout_mode = 0
@@ -213,7 +213,7 @@ offset_top = 37.0
 offset_right = -39.0
 offset_bottom = 77.0
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("5_77mby")
+texture = ExtResource("7_hg8vh")
 
 [node name="Corner2" type="TextureRect" parent="."]
 layout_mode = 0
@@ -222,7 +222,7 @@ offset_top = 78.0
 offset_right = -39.0
 offset_bottom = 118.0
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("5_77mby")
+texture = ExtResource("7_hg8vh")
 
 [node name="Corner3" type="TextureRect" parent="."]
 layout_mode = 0
@@ -231,7 +231,7 @@ offset_top = 78.0
 offset_right = 129.0
 offset_bottom = 118.0
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("5_77mby")
+texture = ExtResource("7_hg8vh")
 
 [node name="Corner4" type="TextureRect" parent="."]
 layout_mode = 0
@@ -240,7 +240,7 @@ offset_top = 37.0
 offset_right = 129.0
 offset_bottom = 77.0
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("5_77mby")
+texture = ExtResource("7_hg8vh")
 
 [connection signal="pressed" from="HoeButton" to="." method="_on_hoe_button_pressed"]
 [connection signal="pressed" from="AxeButton" to="." method="_on_axe_button_pressed"]

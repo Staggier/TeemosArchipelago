@@ -1,35 +1,34 @@
 extends Node
 
-var player: Player
-
-var light_cow: Cow
-var purple_cow: Cow
-var green_cow: Cow
-var pink_cow: Cow
-var brown_cow: Cow
-	
-func _physics_process(delta):
-	print_debug(player.position)	
+var state_machine: StateMachine
+var main_menu: MainMenu
+var game: World
 
 func _ready() -> void:
-	# set player and emote 
-	player = $Player/CharacterBody2D
-	player.emote = $UI/Emote
+	add_child(main_menu)
+
+func _init() -> void:
+	var state_machine = StateMachine.new()
 	
-	# Give the tool selection menu access to the player
-	$UI/ToolSelectMenu.player = player
+	# Load Game and Main Menu scenes
+	game = load("res://scenes/world.tscn").instantiate()
+	main_menu = load("res://scenes/ui/main_menu.tscn").instantiate()
 	
-	# set cows
-	light_cow = $LightCow/CharacterBody2D
-	purple_cow = $PurpleCow/CharacterBody2D
-	green_cow = $GreenCow/CharacterBody2D
-	pink_cow = $PinkCow/CharacterBody2D
-	brown_cow = $BrownCow/CharacterBody2D
+	# Add Game states and set initial state
+	state_machine.add_state("play", PlayState.new(game.get_child(5).get_child(3) as PauseMenu, state_machine))
+	state_machine.add_state("pause", PauseState.new(game.get_child(5).get_child(3) as PauseMenu, state_machine))
+	state_machine.add_state("controls", ControlsState.new(game.get_child(5).get_child(2) as ControlsMenu))
+	state_machine.current_state = state_machine.states["play"]
 	
-	# set player and cow initial positions
-	player.position = Vector2(0, 0)
-	light_cow.position = Vector2(94, -106)
-	purple_cow.position = Vector2(124, -24)
-	green_cow.position = Vector2(32, 80)
-	pink_cow.position = Vector2(-4, 16)
-	brown_cow.position = Vector2(154, 105)
+	# Give Menus access to the Game's state machine
+	(game.get_child(5).get_child(2) as ControlsMenu).state_machine = state_machine
+	(game.get_child(5).get_child(3) as PauseMenu).state_machine = state_machine
+	
+	# Give Pause Menu access to Main Menu
+	(game.get_child(5).get_child(3) as PauseMenu).main_menu = main_menu
+	
+	# Give the world access to the Game's state machine
+	game.state_machine = state_machine
+	
+	# Give the Main Menu access to the game
+	main_menu.game = game

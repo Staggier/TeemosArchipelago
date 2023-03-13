@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3v7yimakb35"]
+[gd_scene load_steps=11 format=3 uid="uid://cmtc5wtf58ed2"]
 
+[ext_resource type="Script" path="res://scripts/ui/pause.gd" id="1_as5wt"]
 [ext_resource type="Texture2D" uid="uid://c0gf6h8hxbp27" path="res://assets/Sprout Lands - UI Pack - Premium pack/UI Sprites/Other UI sprites/Setting menu.png" id="1_ke76p"]
-[ext_resource type="Script" path="res://scripts/ui/pause.gd" id="1_trgvw"]
 [ext_resource type="Texture2D" uid="uid://b7nt2d4hw6e76" path="res://assets/Sprout Lands - UI Pack - Premium pack/UI Sprites/Other UI sprites/button_unpressed.png" id="2_5d4p6"]
 [ext_resource type="Texture2D" uid="uid://k5lnqhevgt72" path="res://assets/Sprout Lands - UI Pack - Premium pack/UI Sprites/Other UI sprites/button_pressed.png" id="3_qw72b"]
 [ext_resource type="Texture2D" uid="uid://bl8lljwlmrxy4" path="res://assets/Sprout Lands - UI Pack - Premium pack/UI Sprites/Other UI sprites/sponsor_button_unpressed.png" id="4_00sgv"]
@@ -160,15 +160,16 @@ texture = ExtResource("1_ke76p")
 sources/0 = SubResource("TileSetAtlasSource_piw21")
 
 [node name="PauseMenu" type="Control"]
+process_priority = -418
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_trgvw")
+script = ExtResource("1_as5wt")
 
-[node name="Background" type="TileMap" parent="."]
+[node name="MenuTiles" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_11ecf")
 format = 2
 layer_0/tile_data = PackedInt32Array(65532, 524288, 0, 131068, 524288, 1, 196604, 524288, 2, 262140, 524288, 3, 327676, 524288, 4, 393212, 524288, 5, 458748, 524288, 6, 524284, 524288, 7, 589820, 524288, 8, 65533, 589824, 0, 131069, 589824, 1, 196605, 589824, 2, 262141, 589824, 3, 327677, 589824, 4, 393213, 589824, 5, 458749, 589824, 6, 524285, 589824, 7, 589821, 589824, 8, 65534, 655360, 0, 131070, 655360, 1, 196606, 655360, 2, 262142, 655360, 3, 327678, 655360, 4, 393214, 655360, 5, 458750, 655360, 6, 524286, 655360, 7, 589822, 655360, 8, 65535, 720896, 0, 131071, 720896, 1, 196607, 720896, 2, 262143, 720896, 3, 327679, 720896, 4, 393215, 720896, 5, 458751, 720896, 6, 524287, 720896, 7, 589823, 720896, 8, 0, 786432, 0, 65536, 786432, 1, 131072, 786432, 2, 196608, 786432, 3, 262144, 786432, 4, 327680, 786432, 5, 393216, 786432, 6, 458752, 786432, 7, 524288, 786432, 8, 1, 851968, 0, 65537, 851968, 1, 131073, 851968, 2, 196609, 851968, 3, 262145, 851968, 4, 327681, 851968, 5, 393217, 851968, 6, 458753, 851968, 7, 524289, 851968, 8, 2, 917504, 0, 65538, 917504, 1, 131074, 917504, 2, 196610, 917504, 3, 262146, 917504, 4, 327682, 917504, 5, 393218, 917504, 6, 458754, 917504, 7, 524290, 917504, 8, 3, 983040, 0, 65539, 983040, 1, 131075, 983040, 2, 196611, 983040, 3, 262147, 983040, 4, 327683, 983040, 5, 393219, 983040, 6, 458755, 983040, 7, 524291, 983040, 8)
@@ -185,6 +186,25 @@ horizontal_alignment = 1
 
 [node name="ResumeButton" type="TextureButton" parent="."]
 layout_mode = 0
+offset_left = -22.5
+offset_top = 49.0
+offset_right = 67.5
+offset_bottom = 76.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("2_5d4p6")
+texture_pressed = ExtResource("3_qw72b")
+
+[node name="ResumeLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = -15.0
+offset_top = 50.0
+offset_right = 25.0
+offset_bottom = 69.0
+scale = Vector2(0.75, 0.75)
+text = "RESUME"
+
+[node name="ControlsButton" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = -23.0
 offset_top = 69.0
 offset_right = 67.0
@@ -193,14 +213,14 @@ scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("2_5d4p6")
 texture_pressed = ExtResource("3_qw72b")
 
-[node name="ResumeLabel" type="Label" parent="."]
+[node name="ControlsLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = -15.0
+offset_left = -19.87
 offset_top = 70.0
-offset_right = 25.0
+offset_right = 33.13
 offset_bottom = 89.0
 scale = Vector2(0.75, 0.75)
-text = "RESUME"
+text = "CONTROLS"
 horizontal_alignment = 1
 
 [node name="SettingsButton" type="TextureButton" parent="."]
@@ -264,6 +284,7 @@ texture_normal = ExtResource("6_bkqcb")
 texture_pressed = ExtResource("7_7yfhj")
 
 [connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="ControlsButton" to="." method="_on_controls_button_pressed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="SponsorButton" to="." method="_on_sponsor_button_pressed"]

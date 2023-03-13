@@ -50,7 +50,8 @@ func _ready() -> void:
 	sprite.play("idle-down")
 	idle_timer.start(IDLE_TIMEOUT)
 	
-func _init() -> void:
+func _init(position: Vector2 = Vector2.ZERO) -> void:
+	self.position = position
 	state_machine = StateMachine.new()
 	
 	state_machine.add_state("idle", PlayerIdleState.new(self))

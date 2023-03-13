@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctwhlti5lak6p"]
+
+[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_7gdvj"]
+[ext_resource type="Texture2D" uid="uid://b7nt2d4hw6e76" path="res://assets/Sprout Lands - UI Pack - Premium pack/UI Sprites/Other UI sprites/button_unpressed.png" id="1_f8yiw"]
+[ext_resource type="Texture2D" uid="uid://k5lnqhevgt72" path="res://assets/Sprout Lands - UI Pack - Premium pack/UI Sprites/Other UI sprites/button_pressed.png" id="2_m7lib"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7gdvj")
+
+[node name="PlayButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.0
+offset_top = -27.0
+offset_right = -37.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+action_mode = 0
+texture_normal = ExtResource("1_f8yiw")
+texture_pressed = ExtResource("2_m7lib")
+
+[node name="PlayLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -14.0
+offset_right = -17.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+text = "Play"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
