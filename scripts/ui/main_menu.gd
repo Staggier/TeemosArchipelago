@@ -7,3 +7,7 @@ var game: World
 func _on_play_button_pressed() -> void:
 	get_tree().get_root().get_node("Game").add_child(game)
 	get_tree().get_root().get_node("Game").remove_child(self)
+
+# Exit game
+func _on_exit_button_pressed():
+	get_tree().quit()

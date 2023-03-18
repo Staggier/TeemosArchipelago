@@ -4,6 +4,9 @@ extends CharacterBody2D
 var timer: Timer
 var sprite: AnimatedSprite2D
 
+var target: Player
+var navigation_agent: NavigationAgent2D
+
 var state_machine: StateMachine
 var direction: Vector2 = Vector2.RIGHT
 var speed: int = 100
@@ -36,14 +39,17 @@ func _on_timeout() -> void:
 			state_machine.change_state("idle")
 		"find":
 			randomize()
-			if randi() % 10 == 9:
-				state_machine.change_state("happy")
+			if randi() % 10 <= 9:
+				state_machine.change_state("eat")
 			else:
 				state_machine.change_state("idle")
 		"happy":
 			state_machine.change_state("idle")
 		"eat":
-			state_machine.change_state("happy")
+			if (state_machine.current_state as CowEatState).follow_triggered:
+				state_machine.change_state("follow")
+			else:	
+				state_machine.change_state("happy")
 		"sleep":
 			state_machine.change_state("transition_from_sleep")
 		"transition_from_sleep":
@@ -58,6 +64,7 @@ func _physics_process(delta: float) -> void:
 
 func _ready() -> void:
 	timer = $Timer
+	navigation_agent = $NavigationAgent2D
 	sprite = $AnimatedSprite2D
 	sprite.play("idle")
 	
@@ -73,5 +80,6 @@ func _init() -> void:
 	state_machine.add_state("sleep", CowSleepState.new(self))
 	state_machine.add_state("transition_from_sleep", CowTransitionFromSleepState.new(self))
 	state_machine.add_state("transition_to_sleep", CowTransitionToSleepState.new(self))
+	state_machine.add_state("follow", CowFollowState.new(self))
 	
 	state_machine.current_state = state_machine.states["idle"]

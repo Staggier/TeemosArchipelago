@@ -8,6 +8,7 @@ func enter(_enter_params: Array[Variant]) -> void:
 	
 	randomize()
 	cow.timer.start(randi() % 2 + 4)
+	
 
 func _init(new_cow: Cow) -> void:
 	cow = new_cow

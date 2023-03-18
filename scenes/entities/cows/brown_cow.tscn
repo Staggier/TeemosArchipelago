@@ -196,6 +196,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_4emsr")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_wc14r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4emsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wc14r")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_enj7d")
 }, {
 "duration": 1.0,
@@ -206,7 +215,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"find",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -336,8 +345,8 @@ script = ExtResource("1_m1hhb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 sprite_frames = SubResource("SpriteFrames_bhff7")
-animation = &"transition_to_sleep"
-frame_progress = 0.366998
+animation = &"find"
+frame_progress = 0.348004
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 8)
@@ -345,5 +354,8 @@ shape = SubResource("RectangleShape2D_0lerc")
 
 [node name="Timer" type="Timer" parent="CharacterBody2D"]
 autostart = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="CharacterBody2D"]
+target_desired_distance = 20.0
 
 [connection signal="timeout" from="CharacterBody2D/Timer" to="CharacterBody2D" method="_on_timeout"]

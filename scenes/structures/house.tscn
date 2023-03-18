@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dvaixkm42hssj"]
+[gd_scene load_steps=22 format=3 uid="uid://dvaixkm42hssj"]
 
 [ext_resource type="Texture2D" uid="uid://c6lc11e4qmojt" path="res://assets/Sprout Lands - Sprites - premium pack/tilesets/Building parts/Wooden House.png" id="1_ykcw6"]
 [ext_resource type="Texture2D" uid="uid://ciecu4dul348f" path="res://assets/Sprout Lands - Sprites - premium pack/tilesets/Building parts/door animation sprites.png" id="2_s6bpr"]
@@ -228,10 +228,6 @@ region = Rect2(32, 0, 16, 16)
 atlas = ExtResource("3_rhk0x")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l5x8d"]
-atlas = ExtResource("3_rhk0x")
-region = Rect2(0, 0, 16, 16)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_nb4cc"]
 animations = [{
 "frames": [{
@@ -249,13 +245,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2iaxx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l5x8d")
 }],
 "loop": true,
 "name": &"open",
-"speed": 7.0
+"speed": 6.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_naytn"]
@@ -297,6 +290,7 @@ script = ExtResource("3_nolce")
 position = Vector2(8, -8)
 sprite_frames = SubResource("SpriteFrames_nb4cc")
 animation = &"open"
+frame_progress = 0.11674
 
 [node name="Hitbox" type="CollisionShape2D" parent="Door"]
 position = Vector2(8, -4)

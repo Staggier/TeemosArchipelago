@@ -1,7 +1,7 @@
 class_name Door
 extends StaticBody2D
 
-const LAST_FRAME = 5
+const LAST_FRAME = 4
 const FIRST_FRAME = 0
 
 var sprite: AnimatedSprite2D
