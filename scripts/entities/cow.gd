@@ -39,7 +39,7 @@ func _on_timeout() -> void:
 			state_machine.change_state("idle")
 		"find":
 			randomize()
-			if randi() % 10 <= 9:
+			if randi() % 10 == 9:
 				state_machine.change_state("eat")
 			else:
 				state_machine.change_state("idle")
@@ -56,6 +56,8 @@ func _on_timeout() -> void:
 			state_machine.change_state("idle")
 		"transition_to_sleep":
 			state_machine.change_state("sleep")
+		"follow":
+			state_machine.change_state("idle")
 		_:
 			pass
 		

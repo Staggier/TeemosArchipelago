@@ -16,6 +16,7 @@ enum Tool {
 var tools: Array[String] = ["hoe", "axe", "water"]
 var tool_index: int = 0
 var tool: String = tools[tool_index]
+var tool_switched: bool = false
 
 var direction: Vector2 = Vector2.DOWN
 var speed: int = 115
@@ -23,13 +24,6 @@ var speed: int = 115
 var state_machine: StateMachine
 
 var emote: Emote
-
-func _on_timeout() -> void:
-	match state_machine.current_state.state_name:
-		"feed":
-			state_machine.change_state("idle")
-		_:
-			pass
 			
 func _on_idle_timeout() -> void:
 	emote.state_machine.change_state("sleepy")
@@ -43,7 +37,6 @@ func _physics_process(delta: float) -> void:
 	state_machine.current_state._physics_process(delta)
 			
 func _ready() -> void:
-	timer = $Timer
 	idle_timer = $IdleTimer
 	sprite = $Sprite
 	

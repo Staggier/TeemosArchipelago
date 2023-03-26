@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dvaixkm42hssj"]
+[gd_scene load_steps=23 format=3 uid="uid://dvaixkm42hssj"]
 
 [ext_resource type="Texture2D" uid="uid://c6lc11e4qmojt" path="res://assets/Sprout Lands - Sprites - premium pack/tilesets/Building parts/Wooden House.png" id="1_ykcw6"]
 [ext_resource type="Texture2D" uid="uid://ciecu4dul348f" path="res://assets/Sprout Lands - Sprites - premium pack/tilesets/Building parts/door animation sprites.png" id="2_s6bpr"]
@@ -254,17 +254,20 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_naytn"]
 size = Vector2(16, 4)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4dtp5"]
-size = Vector2(11, 13)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gljif"]
+size = Vector2(48, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8g11r"]
+size = Vector2(12, 4.7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ugsva"]
-size = Vector2(12, 7.60526)
+size = Vector2(12, 7.36844)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vu3s1"]
 size = Vector2(5.55556, 4.70833)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_so5mi"]
-size = Vector2(11, 5.75)
+size = Vector2(11, 7.05)
 
 [node name="House" type="Node2D"]
 y_sort_enabled = true
@@ -302,20 +305,34 @@ one_shot = true
 [node name="Bed" type="StaticBody2D" parent="."]
 y_sort_enabled = true
 
-[node name="Sprite" type="Sprite2D" parent="Bed"]
-position = Vector2(-10.5, -43)
+[node name="BlanketSprite" type="Sprite2D" parent="Bed"]
+y_sort_enabled = true
+position = Vector2(-10.05, -39)
 scale = Vector2(0.85, 0.85)
 texture = ExtResource("3_xdfjg")
 region_enabled = true
-region_rect = Rect2(17, 26, 14, 22)
+region_rect = Rect2(17, 37, 14, 11)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bed"]
-position = Vector2(-10.5, -42.5)
-shape = SubResource("RectangleShape2D_4dtp5")
+[node name="PillowSprite" type="Sprite2D" parent="Bed"]
+position = Vector2(-10.05, -48)
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("3_xdfjg")
+region_enabled = true
+region_rect = Rect2(17, 26, 14, 13)
+
+[node name="BottomHitbox" type="CollisionShape2D" parent="Bed"]
+position = Vector2(-10.1, -37)
+scale = Vector2(0.25, 0.25)
+shape = SubResource("RectangleShape2D_gljif")
+
+[node name="TopHitbox" type="CollisionShape2D" parent="Bed"]
+position = Vector2(-10.11, -48.2)
+shape = SubResource("RectangleShape2D_8g11r")
 
 [node name="Rug" type="Sprite2D" parent="."]
+visible = false
 z_index = -1
-position = Vector2(-10, -38)
+position = Vector2(-10, -39)
 rotation = 1.5708
 scale = Vector2(1, 1.0771)
 texture = ExtResource("3_xdfjg")
@@ -334,7 +351,7 @@ region_enabled = true
 region_rect = Rect2(49, 32, 14, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dresser"]
-position = Vector2(14.7368, -49.8816)
+position = Vector2(14.737, -50.05)
 shape = SubResource("RectangleShape2D_ugsva")
 
 [node name="Clock" type="Sprite2D" parent="."]
@@ -375,7 +392,7 @@ region_enabled = true
 region_rect = Rect2(49, 49, 14, 14)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Table"]
-position = Vector2(57.5, -26.125)
+position = Vector2(57.5, -26.475)
 shape = SubResource("RectangleShape2D_so5mi")
 
 [connection signal="animation_looped" from="Door/Sprite" to="Door" method="_on_sprite_animation_looped"]

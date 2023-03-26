@@ -8,7 +8,7 @@ func enter(enter_params: Array[Variant]) -> void:
 	cow.sprite.play("eat")
 	cow.timer.start(2.5)
 	
-	if len(enter_params) != 0:
+	if !enter_params.is_empty():
 		follow_triggered = true
 
 func _init(new_cow: Cow) -> void:

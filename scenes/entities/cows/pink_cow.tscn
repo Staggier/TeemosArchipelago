@@ -336,7 +336,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0lerc"]
-size = Vector2(23, 8)
+size = Vector2(23, 9)
 
 [node name="Node2D" type="Node2D"]
 
@@ -349,7 +349,7 @@ animation = &"find"
 frame_progress = 0.890802
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0, 8)
+position = Vector2(0, 8.5)
 shape = SubResource("RectangleShape2D_0lerc")
 
 [node name="Timer" type="Timer" parent="CharacterBody2D"]
@@ -358,5 +358,8 @@ autostart = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="CharacterBody2D"]
 target_desired_distance = 20.0
+avoidance_enabled = true
+radius = 25.0
+neighbor_distance = 50.0
 
 [connection signal="timeout" from="CharacterBody2D/Timer" to="CharacterBody2D" method="_on_timeout"]

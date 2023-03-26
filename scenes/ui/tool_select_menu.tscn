@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://61fhsfc58pae"]
+[gd_scene load_steps=9 format=3 uid="uid://61fhsfc58pae"]
 
 [ext_resource type="Script" path="res://scripts/ui/tool_select.gd" id="1_in3uv"]
 [ext_resource type="Texture2D" uid="uid://c0gf6h8hxbp27" path="res://assets/Sprout Lands - UI Pack - Premium pack/UI Sprites/Other UI sprites/Setting menu.png" id="2_mbbq8"]
 [ext_resource type="Texture2D" uid="uid://carsb8bxltv7y" path="res://assets/Sprout Lands - UI Pack - Premium pack/UI Sprites/Other UI sprites/hoe_button.png" id="3_hh7ja"]
-[ext_resource type="Texture2D" uid="uid://cmwjfoe65jwr7" path="res://assets/Sprout Lands - UI Pack - Premium pack/UI Sprites/Other UI sprites/hoe_button_pressed.png" id="4_dlq6t"]
 [ext_resource type="Texture2D" uid="uid://dj1d87fbnenck" path="res://assets/Sprout Lands - UI Pack - Premium pack/UI Sprites/Other UI sprites/axe_button.png" id="5_ywmv4"]
 [ext_resource type="Texture2D" uid="uid://wulmltj55g05" path="res://assets/Sprout Lands - UI Pack - Premium pack/UI Sprites/Other UI sprites/watering_can_button.png" id="6_h7g6f"]
 [ext_resource type="Texture2D" uid="uid://c1lkxffeqxx4c" path="res://assets/Sprout Lands - UI Pack - Premium pack/UI Sprites/Other UI sprites/tool_menu_corner.png" id="7_hg8vh"]
@@ -188,7 +187,6 @@ offset_top = 55.0
 offset_right = -35.0
 offset_bottom = 79.0
 texture_normal = ExtResource("3_hh7ja")
-texture_pressed = ExtResource("4_dlq6t")
 
 [node name="AxeButton" type="TextureButton" parent="."]
 layout_mode = 0

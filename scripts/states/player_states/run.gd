@@ -21,6 +21,8 @@ func _physics_process(_delta: float) -> void:
 		player.velocity = Vector2(0, 0)
 		player.state_machine.change_state("tool")
 		return
+		
+	# Check for movement
 	if Input.is_action_pressed("up"):
 		player.velocity.y -= 1
 		player.direction = Vector2.UP
@@ -42,8 +44,8 @@ func _physics_process(_delta: float) -> void:
 		player.sprite.play("run-right")
 		movement_detected = true
 		
-	# Check for movement, and switch states or restart the idler timer as necessary
-	if movement_detected == false:
+	# Check for detected movement, and switches states or restarts the idle timer as necessary
+	if !movement_detected:
 		player.state_machine.change_state("idle")
 	else:
 		player.idle_timer.start(player.IDLE_TIMEOUT)
