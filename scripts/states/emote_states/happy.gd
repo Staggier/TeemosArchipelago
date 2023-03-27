@@ -9,4 +9,3 @@ func enter(_enter_params: Array[Variant]) -> void:
 
 func _init(new_emote: Emote) -> void:
 	emote = new_emote
-	self.state_name = "happy"

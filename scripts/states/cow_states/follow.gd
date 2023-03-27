@@ -37,4 +37,3 @@ func exit():
 
 func _init(new_cow: Cow):
 	cow = new_cow
-	self.state_name = "follow"

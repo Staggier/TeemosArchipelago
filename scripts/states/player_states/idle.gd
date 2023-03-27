@@ -50,4 +50,3 @@ func enter(_enter_params: Array[Variant]) -> void:
 
 func _init(new_player: Player) -> void:
 	player = new_player
-	self.state_name = "idle"

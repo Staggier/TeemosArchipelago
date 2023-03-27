@@ -29,7 +29,6 @@ func _physics_process(_delta: float) -> void:
 	
 	if Input.is_action_pressed("up") or Input.is_action_pressed("down") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 		player.state_machine.change_state("run")
-		Input.action_press("t")
 		
 	# Update tool selection for sprite display
 	if player.tool_switched:
@@ -53,4 +52,3 @@ func _physics_process(_delta: float) -> void:
 
 func _init(new_player: Player) -> void:
 	player = new_player
-	self.state_name = "tool"

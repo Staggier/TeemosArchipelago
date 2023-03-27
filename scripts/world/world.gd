@@ -2,17 +2,24 @@ class_name World
 extends Node2D
 
 var state_machine: StateMachine
-var player: Player
 
+var player: Player
 var cows: Array[Cow]
+
+var transition: Transition
 
 func _physics_process(delta: float) -> void:
 	state_machine._physics_process(delta)
+	
+	if player.passed_out:
+		transition.play("fade_in")
+		player.passed_out = false
+		
 
 func _ready() -> void:
 	# Set Player and Emote 
 	player = $Player/CharacterBody2D as Player
-	player.emote = $UI/Emote as Emote
+	player.emote = $CanvasLayer/Emote as Emote
 	
 	cows = [
 		$BrownCow/CharacterBody2D as Cow,
@@ -28,4 +35,13 @@ func _ready() -> void:
 		cow.navigation_agent.target_position = player.global_position
 	
 	# Give the Tool Selection Menu access to the Player
-	($UI/ToolSelectMenu as ToolSelectMenu).player = player
+	($CanvasLayer/ToolSelectMenu as ToolSelectMenu).player = player
+	
+	# Give the Day Control access to the Player
+	($CanvasLayer/Day as Day).player = player
+	
+	# Set the color rect to be transparent to start in 'day time'
+	$CanvasLayer/Day/ColorRect.color = Color(0, 0, 0, 0)
+	
+	# Set Transition
+	transition = $CanvasLayer/Transition/AnimationPlayer as Transition

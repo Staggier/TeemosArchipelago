@@ -54,4 +54,3 @@ func _physics_process(_delta: float) -> void:
 			
 func _init(new_player: Player) -> void:
 	player = new_player
-	self.state_name = "run"

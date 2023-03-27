@@ -11,4 +11,3 @@ func enter(_enter_params: Array[Variant]) -> void:
 
 func _init(new_cow: Cow) -> void:
 	cow = new_cow
-	self.state_name = "idle"

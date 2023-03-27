@@ -687,7 +687,7 @@ animations = [{
 "speed": 5.5
 }]
 
-[node name="Control" type="Control"]
+[node name="Emote" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 16.0

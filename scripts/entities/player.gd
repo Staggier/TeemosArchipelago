@@ -13,6 +13,9 @@ enum Tool {
 	WATER
 }
 
+var inside: bool = true
+var passed_out: bool = false
+
 var tools: Array[String] = ["hoe", "axe", "water"]
 var tool_index: int = 0
 var tool: String = tools[tool_index]
@@ -24,7 +27,14 @@ var speed: int = 115
 var state_machine: StateMachine
 
 var emote: Emote
-			
+
+func _on_timer_timeout() -> void:
+	match state_machine.current_state.state_name:
+		"pass-out":
+			state_machine.change_state("idle")
+		_:
+			pass
+
 func _on_idle_timeout() -> void:
 	emote.state_machine.change_state("sleepy")
 
@@ -35,8 +45,9 @@ func move() -> void:
 		
 func _physics_process(delta: float) -> void:
 	state_machine.current_state._physics_process(delta)
-			
+
 func _ready() -> void:
+	timer = $Timer
 	idle_timer = $IdleTimer
 	sprite = $Sprite
 	
@@ -51,5 +62,6 @@ func _init(position: Vector2 = Vector2.ZERO) -> void:
 	state_machine.add_state("run", PlayerRunState.new(self))
 	state_machine.add_state("tool", PlayerToolState.new(self))
 	state_machine.add_state("feed", PlayerFeedState.new(self))
+	state_machine.add_state("pass-out", PlayerPassOutState.new(self))
 	
 	state_machine.current_state = state_machine.states["idle"]

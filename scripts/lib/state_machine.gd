@@ -6,6 +6,7 @@ var current_state: State
 
 func add_state(state_name: String, state: State) -> void:
 	states[state_name] = state
+	state.state_name = state_name
 	
 func change_state(state_name: String, enter_params: Array[Variant] = []) -> void:
 	current_state.exit()

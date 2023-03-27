@@ -1,21 +1,23 @@
-[gd_scene load_steps=26 format=3 uid="uid://c36exe8sp6bb"]
+[gd_scene load_steps=28 format=3 uid="uid://dx7ckgtqftkrf"]
 
-[ext_resource type="Script" path="res://scripts/world.gd" id="1_q42a8"]
-[ext_resource type="Texture2D" uid="uid://c1txs8xo362bd" path="res://assets/Sprout Lands - Sprites - premium pack/tilesets/Ground tiles/new tiles/Grass hill tiles v.2.png" id="2_7qvxb"]
-[ext_resource type="Texture2D" uid="uid://dunx3nih30xwo" path="res://assets/Sprout Lands - Sprites - premium pack/tilesets/Water.png" id="3_fexs1"]
-[ext_resource type="Texture2D" uid="uid://bqv0lt8gfc78t" path="res://assets/Sprout Lands - Sprites - premium pack/objects/Trees, stumps and bushes.png" id="4_xuaia"]
-[ext_resource type="Texture2D" uid="uid://clpbj1sf46i44" path="res://assets/Sprout Lands - Sprites - premium pack/tilesets/Building parts/big_bridge_horizontal.png" id="5_yh4cx"]
-[ext_resource type="PackedScene" uid="uid://dvaixkm42hssj" path="res://scenes/structures/house.tscn" id="6_pywnr"]
-[ext_resource type="PackedScene" uid="uid://d13dlywgywfbt" path="res://scenes/hud/emote.tscn" id="7_c2idj"]
-[ext_resource type="PackedScene" uid="uid://61fhsfc58pae" path="res://scenes/ui/tool_select_menu.tscn" id="8_slap6"]
-[ext_resource type="PackedScene" uid="uid://djfye7r52k2fb" path="res://scenes/ui/controls_menu.tscn" id="9_wfv6n"]
-[ext_resource type="PackedScene" uid="uid://7oceykmcwenj" path="res://scenes/ui/pause_menu.tscn" id="10_2n3ud"]
-[ext_resource type="PackedScene" uid="uid://co7s7svej7nr0" path="res://scenes/entities/player.tscn" id="11_lnclo"]
-[ext_resource type="PackedScene" uid="uid://cvtw6hq024o01" path="res://scenes/entities/cows/brown_cow.tscn" id="12_mfwdr"]
-[ext_resource type="PackedScene" uid="uid://mvu4p2ff80ko" path="res://scenes/entities/cows/green_cow.tscn" id="13_qha2c"]
-[ext_resource type="PackedScene" uid="uid://1sdhu5vx7cq5" path="res://scenes/entities/cows/light_cow.tscn" id="14_ldsbp"]
-[ext_resource type="PackedScene" uid="uid://cp2tg83s2cnnh" path="res://scenes/entities/cows/pink_cow.tscn" id="15_0on6r"]
-[ext_resource type="PackedScene" uid="uid://df5kvtof5q2v5" path="res://scenes/entities/cows/purple_cow.tscn" id="16_0gyw6"]
+[ext_resource type="Script" path="res://scripts/world/world.gd" id="1_lvgbl"]
+[ext_resource type="Texture2D" uid="uid://dunx3nih30xwo" path="res://assets/Sprout Lands - Sprites - premium pack/tilesets/Water.png" id="2_kqcpn"]
+[ext_resource type="Texture2D" uid="uid://c1txs8xo362bd" path="res://assets/Sprout Lands - Sprites - premium pack/tilesets/Ground tiles/new tiles/Grass hill tiles v.2.png" id="3_2db3t"]
+[ext_resource type="Texture2D" uid="uid://clpbj1sf46i44" path="res://assets/Sprout Lands - Sprites - premium pack/tilesets/Building parts/big_bridge_horizontal.png" id="4_be3l4"]
+[ext_resource type="Texture2D" uid="uid://bqv0lt8gfc78t" path="res://assets/Sprout Lands - Sprites - premium pack/objects/Trees, stumps and bushes.png" id="5_nl1u8"]
+[ext_resource type="PackedScene" uid="uid://61fhsfc58pae" path="res://scenes/ui/tool_select_menu.tscn" id="6_3uwuj"]
+[ext_resource type="PackedScene" uid="uid://bi352q3arh7uw" path="res://scenes/world/day.tscn" id="6_5d1ky"]
+[ext_resource type="PackedScene" uid="uid://djfye7r52k2fb" path="res://scenes/ui/controls_menu.tscn" id="7_askxu"]
+[ext_resource type="PackedScene" uid="uid://d13dlywgywfbt" path="res://scenes/hud/emote.tscn" id="7_jsg6y"]
+[ext_resource type="PackedScene" uid="uid://7oceykmcwenj" path="res://scenes/ui/pause_menu.tscn" id="8_6mn0m"]
+[ext_resource type="PackedScene" uid="uid://co7s7svej7nr0" path="res://scenes/entities/player.tscn" id="9_piil6"]
+[ext_resource type="PackedScene" uid="uid://cvtw6hq024o01" path="res://scenes/entities/cows/brown_cow.tscn" id="10_vh40w"]
+[ext_resource type="PackedScene" uid="uid://mvu4p2ff80ko" path="res://scenes/entities/cows/green_cow.tscn" id="11_6r4vt"]
+[ext_resource type="PackedScene" uid="uid://48op8gwof3ay" path="res://scenes/world/transition.tscn" id="11_rrhyq"]
+[ext_resource type="PackedScene" uid="uid://1sdhu5vx7cq5" path="res://scenes/entities/cows/light_cow.tscn" id="12_w7jam"]
+[ext_resource type="PackedScene" uid="uid://cp2tg83s2cnnh" path="res://scenes/entities/cows/pink_cow.tscn" id="13_3bbon"]
+[ext_resource type="PackedScene" uid="uid://df5kvtof5q2v5" path="res://scenes/entities/cows/purple_cow.tscn" id="14_40jrj"]
+[ext_resource type="PackedScene" uid="uid://dsqkdf7siipyd" path="res://scenes/structures/house.tscn" id="15_cp4hl"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_o84tc"]
 vertices = PackedVector2Array(70, -186, 201, -188, 200, -153, 184, -153, 70, -171, -355, 93, -524, 90, -524, -63, -462, -62, -354, 75, -462, -78, -429, -78, -429, -94, -395, -94, -339, 59, -341, 76, -395, -123, -197, -123, -197, -79, -243, -7, -73, -79, -73, -123, -57, -123, -23, -139, -23, -156, 25, -156, 169, -75, 25, -171, 169, -136, 184, -136, -27, 41, 185, -75, 185, -44, 3, 72, -27, 72, 234, 52, 249, 52, 249, 119, 234, 119, 234, 151, 218, 151, 218, 169, 170, 169, 170, 183, 69, 183, 69, 169, -44, 24, -58, 24, -58, -7, 202, -29, 217, 35, 19, 137, 4, 137, -245, 60, -73, -7, -74, -49, -197, -49, -198, -7, 202, -43, -43, 41, -56, -139, 216, -28, 22, 169, 233, 36)
@@ -23,7 +25,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32
 outlines = Array[PackedVector2Array]([PackedVector2Array(-524, -63, -462, -62, -462, -78, -429, -78, -429, -94, -395, -94, -395, -123, -197, -123, -197, -79, -73, -79, -73, -123, -57, -123, -56, -139, -23, -139, -23, -156, 25, -156, 25, -171, 70, -171, 70, -186, 201, -188, 200, -153, 184, -153, 184, -136, 169, -136, 169, -75, 185, -75, 185, -44, 202, -43, 202, -29, 216, -28, 217, 35, 233, 36, 234, 52, 249, 52, 249, 119, 234, 119, 234, 151, 218, 151, 218, 169, 170, 169, 170, 183, 69, 183, 69, 169, 22, 169, 19, 137, 4, 137, 3, 72, -27, 72, -27, 41, -43, 41, -44, 24, -58, 24, -58, -7, -73, -7, -74, -49, -197, -49, -198, -7, -243, -7, -245, 60, -339, 59, -341, 76, -354, 75, -355, 93, -524, 90)])
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lh1p1"]
-texture = ExtResource("3_fexs1")
+texture = ExtResource("2_kqcpn")
 0:0/animation_speed = 2.2
 0:0/animation_frame_0/duration = 1.0
 0:0/animation_frame_1/duration = 1.0
@@ -39,7 +41,7 @@ navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_lh1p1")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hcxpo"]
-texture = ExtResource("2_7qvxb")
+texture = ExtResource("3_2db3t")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -235,7 +237,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_hcxpo")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u52vw"]
-texture = ExtResource("5_yh4cx")
+texture = ExtResource("4_be3l4")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -266,7 +268,7 @@ physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_u52vw")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3m1oh"]
-texture = ExtResource("4_xuaia")
+texture = ExtResource("5_nl1u8")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -481,9 +483,10 @@ sources/0 = SubResource("TileSetAtlasSource_3m1oh")
 [node name="World" type="Node2D"]
 process_mode = 3
 y_sort_enabled = true
-script = ExtResource("1_q42a8")
+script = ExtResource("1_lvgbl")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_o84tc")
 
 [node name="WaterTiles" type="TileMap" parent="."]
@@ -511,29 +514,31 @@ format = 2
 layer_0/y_sort_enabled = true
 layer_0/tile_data = PackedInt32Array(-786425, 589824, 3, -720889, 589824, 4, -655353, 589824, 5, -786424, 655360, 3, -720888, 655360, 4, -655352, 655360, 5, -786423, 720896, 3, -720887, 720896, 4, -655351, 720896, 5, 393226, 589824, 3, 458762, 589824, 4, 524298, 589824, 5, 393227, 655360, 3, 458763, 655360, 4, 524299, 655360, 5, 393228, 720896, 3, 458764, 720896, 4, 524300, 720896, 5, -589825, 131072, 3, -655360, 196608, 3, -720894, 262144, 3, -720893, 131072, 3, -524312, 589824, 3, -458776, 589824, 4, -393240, 589824, 5, -524311, 655360, 3, -458775, 655360, 4, -393239, 655360, 5, -524310, 720896, 3, -458774, 720896, 4, -393238, 720896, 5)
 
-[node name="House" parent="." instance=ExtResource("6_pywnr")]
-process_mode = 1
-position = Vector2(-495, 14)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="Emote" parent="UI" instance=ExtResource("7_c2idj")]
+[node name="Emote" parent="CanvasLayer" instance=ExtResource("7_jsg6y")]
 process_mode = 1
 
-[node name="ToolSelectMenu" parent="UI" instance=ExtResource("8_slap6")]
+[node name="Day" parent="CanvasLayer" instance=ExtResource("6_5d1ky")]
+process_mode = 1
+
+[node name="ToolSelectMenu" parent="CanvasLayer" instance=ExtResource("6_3uwuj")]
+process_mode = 1
 visible = false
 offset_top = -48.0
 offset_bottom = -48.0
 scale = Vector2(2.7, 2.7)
+mouse_filter = 2
 
-[node name="ControlsMenu" parent="UI" instance=ExtResource("9_wfv6n")]
-process_mode = 0
+[node name="ControlsMenu" parent="CanvasLayer" instance=ExtResource("7_askxu")]
 visible = false
 offset_top = 16.0
 offset_bottom = 16.0
 scale = Vector2(3, 3)
+mouse_filter = 2
 
-[node name="PauseMenu" parent="UI" instance=ExtResource("10_2n3ud")]
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("8_6mn0m")]
+process_mode = 3
 visible = false
 anchors_preset = 5
 anchor_left = 0.5
@@ -544,33 +549,40 @@ offset_bottom = 16.0
 grow_vertical = 1
 scale = Vector2(3.4, 3.4)
 
-[node name="Player" parent="." instance=ExtResource("11_lnclo")]
+[node name="Transition" parent="CanvasLayer" instance=ExtResource("11_rrhyq")]
+mouse_filter = 2
+
+[node name="Player" parent="." instance=ExtResource("9_piil6")]
 process_mode = 1
 y_sort_enabled = true
 position = Vector2(-472, -15)
 scale = Vector2(0.85, 0.85)
 
-[node name="BrownCow" parent="." instance=ExtResource("12_mfwdr")]
+[node name="BrownCow" parent="." instance=ExtResource("10_vh40w")]
 process_mode = 1
 y_sort_enabled = true
 position = Vector2(-415, 49)
 
-[node name="GreenCow" parent="." instance=ExtResource("13_qha2c")]
+[node name="GreenCow" parent="." instance=ExtResource("11_6r4vt")]
 process_mode = 1
 y_sort_enabled = true
 position = Vector2(153, 1)
 
-[node name="LightCow" parent="." instance=ExtResource("14_ldsbp")]
+[node name="LightCow" parent="." instance=ExtResource("12_w7jam")]
 process_mode = 1
 y_sort_enabled = true
 position = Vector2(49, 90)
 
-[node name="PinkCow" parent="." instance=ExtResource("15_0on6r")]
+[node name="PinkCow" parent="." instance=ExtResource("13_3bbon")]
 process_mode = 1
 y_sort_enabled = true
 position = Vector2(45, -114)
 
-[node name="PurpleCow" parent="." instance=ExtResource("16_0gyw6")]
+[node name="PurpleCow" parent="." instance=ExtResource("14_40jrj")]
 process_mode = 1
 y_sort_enabled = true
 position = Vector2(-303, -81)
+
+[node name="House" parent="." instance=ExtResource("15_cp4hl")]
+process_mode = 1
+position = Vector2(-492, 16)
