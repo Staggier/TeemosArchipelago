@@ -4,10 +4,9 @@ extends State
 var pause_menu: PauseMenu
 var state_machine: StateMachine
 
-func _physics_process(delta: float) -> void:
-	if Input.is_action_pressed("escape"):
-		Input.action_release("escape")
-		state_machine.change_state("play", [pause_menu])
+func _init(new_pause_menu: PauseMenu, new_state_machine: StateMachine) -> void:
+	pause_menu = new_pause_menu
+	state_machine = new_state_machine
 
 func enter(enter_params: Array[Variant]) -> void:
 	pause_menu.visible = true
@@ -21,6 +20,7 @@ func enter(enter_params: Array[Variant]) -> void:
 		var position = tiles.get_tile_id(i)
 		tiles.set_tile_animation_frame_duration(position, 0, INF)
 
-func _init(new_pause_menu: PauseMenu, new_state_machine: StateMachine) -> void:
-	pause_menu = new_pause_menu
-	state_machine = new_state_machine
+func _physics_process(delta: float) -> void:
+	if Input.is_action_pressed("escape"):
+		Input.action_release("escape")
+		state_machine.change_state("play", [pause_menu])

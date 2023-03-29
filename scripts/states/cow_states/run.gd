@@ -3,6 +3,13 @@ extends State
 
 var cow: Cow
 
+func _init(new_cow: Cow) -> void:
+	cow = new_cow
+	
+func enter(_enter_params: Array[Variant]) -> void:
+	cow.sprite.play("run")
+	cow.timer.start(2)
+
 func _physics_process(_delta: float) -> void:
 	var random_direction: int = randi() % 4
 
@@ -21,10 +28,3 @@ func _physics_process(_delta: float) -> void:
 			
 	cow.move()
 	cow.update_face_direction()
-	
-func enter(_enter_params: Array[Variant]) -> void:
-	cow.sprite.play("run")
-	cow.timer.start(2)
-	
-func _init(new_cow: Cow) -> void:
-	cow = new_cow

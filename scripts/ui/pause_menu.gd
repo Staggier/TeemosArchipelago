@@ -18,11 +18,12 @@ func _on_controls_button_pressed() -> void:
 	state_machine.change_state("controls")
 	self.visible = false
 	
-func _on_settings_button_pressed() -> void:
-	pass
+func _on_save_button_pressed() -> void:
+	main_menu.world.save_game()
 	
 # Remove World node from tree and exit to Main Menu
 func _on_exit_button_pressed() -> void:
 	state_machine.change_state("play", [self])
 	get_tree().get_root().get_node("Game").add_child(main_menu)
 	get_tree().get_root().get_node("Game").remove_child(get_tree().get_root().get_child(0).get_child(0))
+

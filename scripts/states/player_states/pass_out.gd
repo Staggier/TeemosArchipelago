@@ -3,6 +3,9 @@ extends State
 
 var player: Player
 
+func _init(new_player: Player) -> void:
+	player = new_player
+
 func enter(_enter_params: Array[Variant]) -> void:
 	player.passed_out = true
 	player.timer.start(2.5)
@@ -17,10 +20,7 @@ func enter(_enter_params: Array[Variant]) -> void:
 		_:
 			player.sprite.play("idle-right")
 	
-func exit():
+func exit() -> void:
 	player.global_position = Vector2(-472, -15)
 	player.direction = Vector2.DOWN
 	player.sprite.play("idle-down")
-
-func _init(new_player: Player) -> void:
-	player = new_player

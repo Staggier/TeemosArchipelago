@@ -3,7 +3,10 @@ extends State
 
 var cow: Cow
 
-func _physics_process(delta):
+func _init(new_cow: Cow) -> void:
+	cow = new_cow
+
+func _physics_process(delta: float) -> void:
 	var position
 	var direction
 	
@@ -27,13 +30,10 @@ func _physics_process(delta):
 			cow.sprite.flip_h = true
 		
 	cow.navigation_agent.target_position = cow.target.global_position
-
-func enter(_enter_params: Array[Variant]):
+	
+func enter(_enter_params: Array[Variant]) -> void:
 	cow.timer.start(10)
 	cow.speed = 75
 
-func exit():
+func exit() -> void:
 	cow.speed = 100
-
-func _init(new_cow: Cow):
-	cow = new_cow

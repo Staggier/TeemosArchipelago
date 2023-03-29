@@ -3,6 +3,9 @@ extends State
 
 var player: Player
 
+func _init(new_player: Player) -> void:
+	player = new_player
+
 func _physics_process(_delta: float) -> void:
 	player.velocity = Vector2()
 	
@@ -51,6 +54,3 @@ func _physics_process(_delta: float) -> void:
 		player.idle_timer.start(player.IDLE_TIMEOUT)
 		
 	player.move()
-			
-func _init(new_player: Player) -> void:
-	player = new_player

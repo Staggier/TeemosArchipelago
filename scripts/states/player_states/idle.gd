@@ -3,6 +3,20 @@ extends State
 
 var player: Player
 
+func _init(new_player: Player) -> void:
+	player = new_player
+
+func enter(_enter_params: Array[Variant]) -> void:
+	match player.direction:
+		Vector2.UP:
+			player.sprite.play("idle-up")
+		Vector2.DOWN:
+			player.sprite.play("idle-down")
+		Vector2.RIGHT:
+			player.sprite.play("idle-right")
+		_:
+			player.sprite.play("idle-left")
+
 func _physics_process(_delta: float) -> void:
 	# Player moved
 	if Input.is_action_pressed("up") or Input.is_action_pressed("down") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
@@ -36,17 +50,3 @@ func _physics_process(_delta: float) -> void:
 				(collider.get_collider() as Cow).state_machine.change_state("run")
 				player.emote.state_machine.change_state("angry")
 			return
-	
-func enter(_enter_params: Array[Variant]) -> void:
-	match player.direction:
-		Vector2.UP:
-			player.sprite.play("idle-up")
-		Vector2.DOWN:
-			player.sprite.play("idle-down")
-		Vector2.RIGHT:
-			player.sprite.play("idle-right")
-		_:
-			player.sprite.play("idle-left")
-
-func _init(new_player: Player) -> void:
-	player = new_player

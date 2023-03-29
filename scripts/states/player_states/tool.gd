@@ -4,6 +4,9 @@ extends State
 const NUM_TOOLS = 3
 var player: Player
 
+func _init(new_player: Player) -> void:
+	player = new_player
+
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("t"):
 		player.state_machine.change_state("idle")
@@ -49,6 +52,3 @@ func _physics_process(_delta: float) -> void:
 		
 	# Prevent the idle timer from activating
 	player.idle_timer.start(player.IDLE_TIMEOUT)
-
-func _init(new_player: Player) -> void:
-	player = new_player

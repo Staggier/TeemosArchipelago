@@ -138,7 +138,7 @@ scale = Vector2(0.75, 0.75)
 text = "CONTROLS"
 horizontal_alignment = 1
 
-[node name="SettingsButton" type="TextureButton" parent="."]
+[node name="SaveButton" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = -22.5
 offset_top = 89.0
@@ -148,14 +148,14 @@ scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("2_5d4p6")
 texture_pressed = ExtResource("3_qw72b")
 
-[node name="SettingsLabel" type="Label" parent="."]
+[node name="SaveLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = -19.0
+offset_left = -18.75
 offset_top = 90.0
-offset_right = 31.0
+offset_right = 31.25
 offset_bottom = 109.0
 scale = Vector2(0.75, 0.75)
-text = "SETTINGS"
+text = "SAVE"
 horizontal_alignment = 1
 
 [node name="ExitButton" type="TextureButton" parent="."]
@@ -200,7 +200,7 @@ texture_pressed = ExtResource("7_7yfhj")
 
 [connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="ControlsButton" to="." method="_on_controls_button_pressed"]
-[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="SponsorButton" to="." method="_on_sponsor_button_pressed"]
 [connection signal="pressed" from="AboutButton" to="." method="_on_about_button_pressed"]
