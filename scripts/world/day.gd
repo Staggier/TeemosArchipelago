@@ -8,9 +8,9 @@ var timer: Timer
 
 var player: Player
 
-const DAY_CYCLE: int = 6
-const EVENING_CYCLE: int = 6
-const NIGHT_CYCLE: int = 6
+const DAY_CYCLE: int = 60 * 12
+const EVENING_CYCLE: int = 60 * 6
+const NIGHT_CYCLE: int = 60 * 6
 
 func _init() -> void:
 	state_machine = StateMachine.new()

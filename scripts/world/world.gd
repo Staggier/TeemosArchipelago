@@ -9,6 +9,7 @@ var transition: Transition
 
 var player: Player
 var cows: Array[Cow]
+var chickens: Array[Chicken]
 
 var bridges: TileMap
 
@@ -31,6 +32,12 @@ func _ready() -> void:
 		$LightCow/CharacterBody2D as Cow,
 		$PinkCow/CharacterBody2D as Cow,
 		$PurpleCow/CharacterBody2D as Cow
+	]
+	
+	chickens = [
+		$Chicken1/CharacterBody2D as Chicken,
+		$Chicken2/CharacterBody2D as Chicken,
+		$Chicken3/CharacterBody2D as Chicken
 	]
 	
 	# Set Cow's target location to the Player

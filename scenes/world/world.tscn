@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dx7ckgtqftkrf"]
+[gd_scene load_steps=29 format=3 uid="uid://dx7ckgtqftkrf"]
 
 [ext_resource type="Script" path="res://scripts/world/world.gd" id="1_lvgbl"]
 [ext_resource type="Texture2D" uid="uid://dunx3nih30xwo" path="res://assets/Sprout Lands - Sprites - premium pack/tilesets/Water.png" id="2_kqcpn"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cp2tg83s2cnnh" path="res://scenes/entities/cows/pink_cow.tscn" id="13_3bbon"]
 [ext_resource type="PackedScene" uid="uid://df5kvtof5q2v5" path="res://scenes/entities/cows/purple_cow.tscn" id="14_40jrj"]
 [ext_resource type="PackedScene" uid="uid://dsqkdf7siipyd" path="res://scenes/structures/house.tscn" id="15_cp4hl"]
+[ext_resource type="PackedScene" uid="uid://hh7icv6idcah" path="res://scenes/entities/chicken.tscn" id="19_8wypm"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_o84tc"]
 vertices = PackedVector2Array(70, -186, 201, -188, 200, -153, 184, -153, 70, -171, -355, 93, -524, 90, -524, -63, -462, -62, -354, 75, -462, -78, -429, -78, -429, -94, -395, -94, -339, 59, -341, 76, -395, -123, -197, -123, -197, -79, -243, -7, -73, -79, -73, -123, -57, -123, -23, -139, -23, -156, 25, -156, 169, -75, 25, -171, 169, -136, 184, -136, -27, 41, 185, -75, 185, -44, 3, 72, -27, 72, 234, 52, 249, 52, 249, 119, 234, 119, 234, 151, 218, 151, 218, 169, 170, 169, 170, 183, 69, 183, 69, 169, -44, 24, -58, 24, -58, -7, 202, -29, 217, 35, 19, 137, 4, 137, -245, 60, -73, -7, -74, -49, -197, -49, -198, -7, 202, -43, -43, 41, -56, -139, 216, -28, 22, 169, 233, 36)
@@ -552,6 +553,10 @@ scale = Vector2(3.4, 3.4)
 [node name="Transition" parent="CanvasLayer" instance=ExtResource("11_rrhyq")]
 mouse_filter = 2
 
+[node name="House" parent="." instance=ExtResource("15_cp4hl")]
+process_mode = 1
+position = Vector2(-492, 16)
+
 [node name="Player" parent="." instance=ExtResource("9_piil6")]
 process_mode = 1
 y_sort_enabled = true
@@ -583,6 +588,11 @@ process_mode = 1
 y_sort_enabled = true
 position = Vector2(-303, -81)
 
-[node name="House" parent="." instance=ExtResource("15_cp4hl")]
-process_mode = 1
-position = Vector2(-492, 16)
+[node name="Chicken1" parent="." instance=ExtResource("19_8wypm")]
+y_sort_enabled = true
+
+[node name="Chicken2" parent="." instance=ExtResource("19_8wypm")]
+position = Vector2(89, -146)
+
+[node name="Chicken3" parent="." instance=ExtResource("19_8wypm")]
+position = Vector2(-348, -21)
