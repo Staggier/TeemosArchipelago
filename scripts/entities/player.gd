@@ -24,6 +24,8 @@ var tool_switched: bool = false
 var direction: Vector2 = Vector2.DOWN
 var speed: int = 115
 
+var is_waiting: bool = false
+
 var state_machine: StateMachine
 
 var emote: Emote
@@ -37,6 +39,8 @@ func _init(position: Vector2 = Vector2.ZERO) -> void:
 	state_machine.add_state("tool", PlayerToolState.new(self))
 	state_machine.add_state("feed", PlayerFeedState.new(self))
 	state_machine.add_state("pass-out", PlayerPassOutState.new(self))
+	state_machine.add_state("axe", PlayerAxeState.new(self))
+	state_machine.add_state("wait", PlayerWaitState.new(self))
 	
 	state_machine.current_state = state_machine.states["idle"]
 
@@ -58,13 +62,24 @@ func move() -> void:
 
 func _on_timeout() -> void:
 	match state_machine.current_state.state_name:
-		"pass-out":
+		"pass-out", "wait":
 			state_machine.change_state("idle")
+		"tool":
+			match tool:
+				"axe":
+					state_machine.change_state("axe")
+				_:
+					pass
 		_:
 			pass
 
 func _on_idle_timeout() -> void:
 	emote.state_machine.change_state("sleepy")
+	
+func _on_animation_looped():
+	match state_machine.current_state.state_name:
+		"axe":
+			state_machine.change_state("axe")
 
 func get_save_data() -> Dictionary:
 	return {

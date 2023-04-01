@@ -7,7 +7,9 @@ var timer: Timer
 var sprite: AnimatedSprite2D
 
 var direction: Vector2 = Vector2.RIGHT
-var speed = 85
+var speed: int = 85
+
+var on_bridge: bool = false
 
 func _init() -> void:
 	state_machine = StateMachine.new()
@@ -56,7 +58,8 @@ func _on_timeout() -> void:
 					5:
 						state_machine.change_state("look-around")
 					6:
-						state_machine.change_state("feed")
+						if !on_bridge:
+							state_machine.change_state("feed")
 		"walk":
 			state_machine.change_state("idle")
 		"sit":
@@ -69,3 +72,23 @@ func _on_timeout() -> void:
 			state_machine.change_state("sit")
 		"transition-from-sit":
 			state_machine.change_state("idle")
+			
+func get_save_data() -> Dictionary:
+	return {
+		"x": self.global_position.x,
+		"y": self.global_position.y,
+		"state": state_machine.current_state.state_name,
+		"frame": sprite.frame,
+		"on_bridge": on_bridge,
+		"direction_x": direction.x,
+		"direction_y": direction.y,
+		"timer_wait_time": timer.time_left
+	}
+	
+func load_from_save_data(save_data: Dictionary) -> void:
+	self.global_position = Vector2(save_data.x, save_data.y)
+	direction = Vector2(save_data.direction_x, save_data.direction_y)
+	state_machine.change_state(save_data.state)
+	sprite.frame = save_data.frame
+	on_bridge = save_data.on_bridge
+	timer.start(save_data.timer_wait_time)

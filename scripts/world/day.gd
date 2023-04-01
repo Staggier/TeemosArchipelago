@@ -6,6 +6,8 @@ var animation_player: AnimationPlayer
 var color_rect: ColorRect
 var timer: Timer
 
+var transition: Transition
+
 var player: Player
 
 const DAY_CYCLE: int = 60 * 12
@@ -32,11 +34,11 @@ func _physics_process(delta: float) -> void:
 func _on_timeout() -> void:
 	match state_machine.current_state.state_name:
 		"day-state":
-			state_machine.change_state("evening-state")
+			state_machine.change_state("evening-state" ,[true])
 		"evening-state":
-			state_machine.change_state("night-state")
+			state_machine.change_state("night-state", [true])
 		"night-state":
-			state_machine.change_state("day-state")
+			state_machine.change_state("day-state", [true])
 	
 func get_save_data() -> Dictionary:
 	return {
@@ -48,7 +50,7 @@ func get_save_data() -> Dictionary:
 	}
 	
 func load_from_save_data(save_data: Dictionary) -> void:
-	state_machine.change_state(save_data.state)
+	state_machine.change_state(save_data.state, [false])
 
 	if save_data.animation_player_current_animation != "":
 		animation_player.current_animation = save_data.animation_player_current_animation

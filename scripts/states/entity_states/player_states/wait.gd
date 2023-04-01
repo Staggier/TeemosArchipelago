@@ -1,4 +1,4 @@
-class_name PlayerPassOutState
+class_name PlayerWaitState
 extends State
 
 var player: Player
@@ -6,9 +6,11 @@ var player: Player
 func _init(new_player: Player) -> void:
 	player = new_player
 
-func enter(_enter_params: Array[Variant]) -> void:
-	player.passed_out = true
-	player.timer.start(2.5)
+func enter(enter_params: Array[Variant]) -> void:
+	var wait_time: float = enter_params[0]
+	
+	player.timer.start(wait_time)
+	player.is_waiting = true
 	
 	match player.direction:
 		Vector2.UP:
@@ -19,9 +21,6 @@ func enter(_enter_params: Array[Variant]) -> void:
 			player.sprite.play("idle-left")
 		_:
 			player.sprite.play("idle-right")
-	
+
 func exit() -> void:
-	player.passed_out = false
-	player.global_position = Vector2(-472, -15)
-	player.direction = Vector2.DOWN
-	player.sprite.play("idle-down")
+	player.is_waiting = false

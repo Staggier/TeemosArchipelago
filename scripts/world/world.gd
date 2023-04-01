@@ -10,6 +10,7 @@ var transition: Transition
 var player: Player
 var cows: Array[Cow]
 var chickens: Array[Chicken]
+var trees: Array[FruitTree]
 
 var bridges: TileMap
 
@@ -18,7 +19,7 @@ func _init():
 
 func _ready() -> void:
 	state_machine.add_state("play", PlayState.new(state_machine))
-	state_machine.add_state("pause", PauseState.new($CanvasLayer/PauseMenu as PauseMenu, state_machine))
+	state_machine.add_state("pause", PauseState.new(state_machine, $CanvasLayer/PauseMenu as PauseMenu, $WaterTiles as TileMap))
 	state_machine.add_state("controls", ControlsState.new($CanvasLayer/ControlsMenu as ControlsMenu, state_machine))
 	state_machine.current_state = state_machine.states["play"]
 	
@@ -38,6 +39,13 @@ func _ready() -> void:
 		$Chicken1/CharacterBody2D as Chicken,
 		$Chicken2/CharacterBody2D as Chicken,
 		$Chicken3/CharacterBody2D as Chicken
+	]
+	
+	trees = [
+		$AppleTree/StaticBody2D as FruitTree,
+		$OrangeTree/StaticBody2D as FruitTree,
+		$PeachTree/StaticBody2D as FruitTree,
+		$PearTree/StaticBody2D as FruitTree
 	]
 	
 	# Set Cow's target location to the Player
@@ -64,8 +72,9 @@ func _ready() -> void:
 	# Set Transition
 	transition = $CanvasLayer/Transition/AnimationPlayer as Transition
 	
-	# Set Day
-	day = $CanvasLayer/Day
+	# Set Day and give it access to the Transition animation player
+	day = $CanvasLayer/Day as Day
+	day.transition = transition
 	
 	# Set bridge tiles
 	bridges = $BridgeTiles
@@ -74,13 +83,12 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	state_machine._physics_process(delta)
-
-	if player.passed_out:
-		transition.play("fade_in")
-		player.passed_out = false
 		
 	for cow in cows:
 		cow.on_bridge = on_bridge(cow)
+		
+	for chicken in chickens:
+		chicken.on_bridge = on_bridge(chicken)
 
 # Check if an entity is on a bridge tile
 func on_bridge(entity: CharacterBody2D) -> bool:
@@ -92,9 +100,17 @@ func save_game() -> void:
 	# Save player state
 	save_game.store_line(JSON.stringify(player.get_save_data()))
 	
-	# Save each cow state
+	# Save each cow's state
 	for cow in cows:
 		save_game.store_line(JSON.stringify(cow.get_save_data()))
+		
+	# Save each tree's state
+	for tree in trees:
+		save_game.store_line(JSON.stringify(tree.get_save_data()))
+		
+	# Save each chicken's state
+	for chicken in chickens:
+		save_game.store_line(JSON.stringify(chicken.get_save_data()))
 		
 	# Save day state
 	save_game.store_line(JSON.stringify(day.get_save_data()))
@@ -105,12 +121,20 @@ func load_game() -> void:
 
 	var save_game = FileAccess.open(OS.get_executable_path().get_base_dir() + "/teemos.save", FileAccess.READ)
 	
-	# Load Player state
+	# Load player's state
 	player.load_from_save_data(JSON.parse_string(save_game.get_line()))
 	
-	# Load each Cow state
+	# Load each cow's state
 	for cow in cows:
 		cow.load_from_save_data(JSON.parse_string(save_game.get_line()))
 		
-	# Load Day state
+	# Load each tree's state
+	for tree in trees:
+		tree.load_from_save_data(JSON.parse_string(save_game.get_line()))
+		
+	# Load each chicken's state
+	for chicken in chickens:
+		chicken.load_from_save_data(JSON.parse_string(save_game.get_line()))
+		
+	# Load the day's state
 	day.load_from_save_data(JSON.parse_string(save_game.get_line()))

@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://gp854dsr10hy"]
+
+[ext_resource type="Texture2D" uid="uid://bqv0lt8gfc78t" path="res://assets/Sprout Lands - Sprites - premium pack/objects/Trees, stumps and bushes.png" id="1_lbmrc"]
+[ext_resource type="Script" path="res://scripts/objects/items/fruit.gd" id="1_tcyqh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wx8um"]
+size = Vector2(3, 2)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64qwc"]
+atlas = ExtResource("1_lbmrc")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eitdx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64qwc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Apple" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_tcyqh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_wx8um")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+sprite_frames = SubResource("SpriteFrames_eitdx")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
