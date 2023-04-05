@@ -9,6 +9,14 @@ func _init(new_player: Player) -> void:
 
 func enter(enter_params: Array[Variant]) -> void:
 	cow = enter_params[0]
-	cow.state_machine.change_state("eat", [true])
 	
-	player.state_machine.change_state("idle")
+	player.timer.start(1)
+	match player.direction:
+		Vector2.UP:
+			player.sprite.play("feed-up")
+		Vector2.DOWN:
+			player.sprite.play("feed-down")
+		Vector2.LEFT:
+			player.sprite.play("feed-left")
+		Vector2.RIGHT:
+			player.sprite.play("feed-right")

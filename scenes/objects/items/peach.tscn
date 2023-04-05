@@ -1,15 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://5ejym3f81wev"]
 
-[ext_resource type="Script" path="res://scripts/objects/items/fruit.gd" id="1_kijwh"]
+[ext_resource type="Script" path="res://scripts/objects/items/item.gd" id="1_sillp"]
 [ext_resource type="Texture2D" uid="uid://bqv0lt8gfc78t" path="res://assets/Sprout Lands - Sprites - premium pack/objects/Trees, stumps and bushes.png" id="1_tyahl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_254tj"]
 size = Vector2(4, 3)
 
 [node name="Peach" type="Node2D"]
+metadata/item_name = "Peach"
+metadata/item_value = "5"
+metadata/item_type = "fruit"
 
 [node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("1_kijwh")
+script = ExtResource("1_sillp")
+metadata/item_name = "Peach"
+metadata/item_value = "5"
+metadata/item_type = "fruit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -0.5)

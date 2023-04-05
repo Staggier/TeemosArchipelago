@@ -40,6 +40,7 @@ func _init(position: Vector2 = Vector2.ZERO) -> void:
 	state_machine.add_state("feed", PlayerFeedState.new(self))
 	state_machine.add_state("pass-out", PlayerPassOutState.new(self))
 	state_machine.add_state("axe", PlayerAxeState.new(self))
+	state_machine.add_state("hoe", PlayerHoeState.new(self))
 	state_machine.add_state("wait", PlayerWaitState.new(self))
 	
 	state_machine.current_state = state_machine.states["idle"]
@@ -62,12 +63,14 @@ func move() -> void:
 
 func _on_timeout() -> void:
 	match state_machine.current_state.state_name:
-		"pass-out", "wait":
+		"pass-out", "wait", "feed":
 			state_machine.change_state("idle")
 		"tool":
 			match tool:
 				"axe":
 					state_machine.change_state("axe")
+				"hoe":
+					state_machine.change_state("hoe")
 				_:
 					pass
 		_:
@@ -80,6 +83,15 @@ func _on_animation_looped():
 	match state_machine.current_state.state_name:
 		"axe":
 			state_machine.change_state("axe")
+		"feed":
+			var cow: Cow = state_machine.current_state.cow
+			cow.state_machine.change_state("eat", [true])
+			
+			state_machine.change_state("idle")
+		"hoe":
+			state_machine.change_state("hoe")
+		_:
+			pass
 
 func get_save_data() -> Dictionary:
 	return {

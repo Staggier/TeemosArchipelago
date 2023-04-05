@@ -89,6 +89,7 @@ func get_save_data() -> Dictionary:
 		"state": state_machine.current_state.state_name,
 		"frame": sprite.frame,
 		"on_bridge": on_bridge,
+		"follow_triggered": follow_triggered,
 		"direction_x": direction.x,
 		"direction_y": direction.y,
 		"timer_wait_time": timer.time_left
@@ -97,7 +98,11 @@ func get_save_data() -> Dictionary:
 func load_from_save_data(save_data: Dictionary) -> void:
 	self.global_position = Vector2(save_data.x, save_data.y)
 	direction = Vector2(save_data.direction_x, save_data.direction_y)
-	state_machine.change_state(save_data.state)
+	match save_data.state:
+		"follow":
+			state_machine.change_state(save_data.state, [save_data.follow_triggered])
+		_:
+			state_machine.change_state(save_data.state)
 	sprite.frame = save_data.frame
 	on_bridge = save_data.on_bridge
 	timer.start(save_data.timer_wait_time)

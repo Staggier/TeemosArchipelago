@@ -25,7 +25,7 @@ func enter(_enter_params: Array[Variant]) -> void:
 				player.sprite.play("%s-left" % player.tool)
 				
 		match player.tool:
-			"axe":
+			"axe", "hoe":
 				player.timer.start(0.5)
 			_:
 				pass

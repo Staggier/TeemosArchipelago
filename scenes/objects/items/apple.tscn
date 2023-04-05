@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://gp854dsr10hy"]
 
+[ext_resource type="Script" path="res://scripts/objects/items/item.gd" id="1_jvk1l"]
 [ext_resource type="Texture2D" uid="uid://bqv0lt8gfc78t" path="res://assets/Sprout Lands - Sprites - premium pack/objects/Trees, stumps and bushes.png" id="1_lbmrc"]
-[ext_resource type="Script" path="res://scripts/objects/items/fruit.gd" id="1_tcyqh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wx8um"]
 size = Vector2(3, 2)
@@ -23,9 +23,12 @@ animations = [{
 
 [node name="Apple" type="Node2D"]
 y_sort_enabled = true
+metadata/item_name = "Apple"
+metadata/item_value = "5"
+metadata/item_type = "fruit"
 
 [node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("1_tcyqh")
+script = ExtResource("1_jvk1l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.5, 1)

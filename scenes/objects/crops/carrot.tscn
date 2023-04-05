@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://c7psakp2i6dls"]
+
+[ext_resource type="Texture2D" uid="uid://csli6mpmcslqp" path="res://assets/Sprout Lands - Sprites - premium pack/objects/Farming Plants.png" id="1_ckojy"]
+[ext_resource type="Script" path="res://scripts/objects/items/crop.gd" id="1_dp3bp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yc65m"]
+size = Vector2(14, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvup8"]
+atlas = ExtResource("1_ckojy")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12mvv"]
+atlas = ExtResource("1_ckojy")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwlxj"]
+atlas = ExtResource("1_ckojy")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2213"]
+atlas = ExtResource("1_ckojy")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1b3u0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvup8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12mvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwlxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2213")
+}],
+"loop": true,
+"name": &"grow",
+"speed": 5.0
+}]
+
+[node name="CarrotCrop" type="Node2D"]
+metadata/crop_type = "carrot"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+script = ExtResource("1_dp3bp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_yc65m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D"]
+sprite_frames = SubResource("SpriteFrames_1b3u0")
+animation = &"grow"
+
+[connection signal="animation_looped" from="StaticBody2D/AnimatedSprite2D" to="StaticBody2D" method="_on_animation_looped"]

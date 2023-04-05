@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://io8fbxqxafui"]
+
+[ext_resource type="Script" path="res://scripts/objects/items/item.gd" id="1_gw2p8"]
+[ext_resource type="Texture2D" uid="uid://f64s1aaakqhk" path="res://assets/Sprout Lands - Sprites - premium pack/Items/corn.png" id="1_vh45u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1s1it"]
+size = Vector2(6, 6.5)
+
+[node name="Corn" type="Node2D"]
+metadata/item_name = "Corn"
+metadata/item_value = "10"
+metadata/item_type = "crop"
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_gw2p8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("1_vh45u")
+metadata/item_name = "Corn"
+metadata/item_value = "15"
+metadata/item_type = "crop"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1.25)
+shape = SubResource("RectangleShape2D_1s1it")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

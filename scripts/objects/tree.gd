@@ -16,7 +16,6 @@ var is_shaking: bool = false
 var type: String
 var times_hit: int = 0
 
-
 func _init() -> void:
 	state_machine = StateMachine.new()
 	state_machine.add_state("idle", TreeIdleState.new(self))
@@ -32,7 +31,7 @@ func _ready() -> void:
 	top_sprite = $TreeSprite
 	bottom_sprite = $TrunkSprite
 	
-	type = get_parent().get_meta("FruitType")
+	type = get_parent().get_meta("fruit_type")
 	match type:
 		"apple":
 			fruit_scene = load("res://scenes/objects/items/apple.tscn")

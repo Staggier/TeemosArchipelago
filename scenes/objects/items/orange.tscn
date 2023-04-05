@@ -1,16 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://bwco3xgvoy8f0"]
 
-[ext_resource type="Script" path="res://scripts/objects/items/fruit.gd" id="1_7vnh4"]
 [ext_resource type="Texture2D" uid="uid://bqv0lt8gfc78t" path="res://assets/Sprout Lands - Sprites - premium pack/objects/Trees, stumps and bushes.png" id="1_47nh0"]
+[ext_resource type="Script" path="res://scripts/objects/items/item.gd" id="1_jxwov"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qyryd"]
 size = Vector2(4, 4)
 
 [node name="Orange" type="Node2D"]
 y_sort_enabled = true
+metadata/item_name = "Orange"
+metadata/item_value = "5"
+metadata/item_type = "fruit"
 
 [node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("1_7vnh4")
+script = ExtResource("1_jxwov")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 texture = ExtResource("1_47nh0")

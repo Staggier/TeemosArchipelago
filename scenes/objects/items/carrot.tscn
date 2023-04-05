@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds3lui8hht200"]
+
+[ext_resource type="Script" path="res://scripts/objects/items/item.gd" id="1_ak3m2"]
+[ext_resource type="Texture2D" uid="uid://bb0sxq0e6lyxa" path="res://assets/Sprout Lands - Sprites - premium pack/Items/carrot.png" id="1_oemgc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pnmaw"]
+size = Vector2(11, 9)
+
+[node name="Carrot" type="Node2D"]
+metadata/item_name = "Carrot"
+metadata/item_value = "20"
+metadata/item_type = "crop"
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_ak3m2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 2.5)
+shape = SubResource("RectangleShape2D_pnmaw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("1_oemgc")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

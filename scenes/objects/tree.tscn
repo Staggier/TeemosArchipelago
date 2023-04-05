@@ -1242,13 +1242,13 @@ shape = SubResource("RectangleShape2D_3o4yl")
 [node name="TrunkSprite" type="AnimatedSprite2D" parent="StaticBody2D"]
 position = Vector2(0, 17)
 sprite_frames = SubResource("SpriteFrames_s8g8p")
-animation = &"fruit_fall_peach"
+animation = &"idle"
 
 [node name="TreeSprite" type="AnimatedSprite2D" parent="StaticBody2D"]
 z_index = 1
 position = Vector2(-29, 2)
 sprite_frames = SubResource("SpriteFrames_apfks")
-animation = &"fruit_fall_peach"
+animation = &"idle_pear"
 offset = Vector2(29, -2)
 
 [node name="Timer" type="Timer" parent="StaticBody2D"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqysu7ddwic43"]
+
+[ext_resource type="Texture2D" uid="uid://ci5wkec1i0xt3" path="res://assets/Sprout Lands - Sprites - premium pack/Items/pumpkin.png" id="1_hfuyg"]
+[ext_resource type="Script" path="res://scripts/objects/items/item.gd" id="1_lwdao"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxtur"]
+size = Vector2(14, 10)
+
+[node name="Pumpkin" type="Node2D"]
+metadata/item_name = "Pumpkin"
+metadata/item_value = "60"
+metadata/item_type = "crop"
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_lwdao")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_qxtur")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("1_hfuyg")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
